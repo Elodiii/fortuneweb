@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <style>
+        #menu_control{
+        position: absolute;
+        opacity: 0;
+        }   
+        /* .header{
+            display: flex;
+            padding: 6px 10px;
+            background-color: rgb(206, 101, 101);
+        } */
+        .header{
+        height: 50px;
+        padding: 6px 10px;
+        background-color: rgb(206, 101, 101);
+        position: relative;
+        }
+        
+        /* .header .logo a{
+        display: block;
+        height: 40px;
+        } */
+
+        .header .logo{
+            display: inline-block;
+            padding: 4px 0;
+            top: 0;
+        }
+
+        .header .logo img{
+        display: inline-block;
+        width: 56px;
+        height:56px;
+        left: 0;
+        bottom: 0;
+        padding: 0;
+        position: relative;
+
+        }
+
+        .header .name{
+            width: 100%;
+            font-size: 40px;
+            display: inline-block;
+            margin: auto;
+            padding: 6px 0;
+            position:absolute;
+            color: #fff;
+            text-shadow: 2px 4px 3px
+            rgba(0,0,0,0.3);
+        }
+        .menu_btn{
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        }
+        .menu_btn span{
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        display: block;
+        overflow: hidden;
+        }
+        .menu_btn::before{
+        content: '';
+        position: absolute;
+        height: 2px;
+        left: 2px;
+        width: 36px;
+        background-color: #aaa;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        box-shadow: 0 8px 0 #aaa,
+                    0 -8px 0 #aaa;
+        }   
+        nav{
+        width: 80%;
+        height: calc(100vh - 50px );
+        background-color: rgb(253, 194, 184);
+        position: absolute;
+        top: 50px;
+        left: -100%;
+        transition: .5s;
+        }
+        nav a{
+        display: block;
+        text-decoration: none;
+        color: #000;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgb(206, 101, 101);
+        }
+        #menu_control:checked ~.header nav{
+        left: 0;
+        }
+
+        @media screen and (min-width:768px){
+        .menu_btn{display: none;}
+        .header{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(206, 101, 101);
+            align-items: center;
+        }
+        .header .logo{
+            display: inline-block;
+            padding: 4px 0;
+            top: 0;
+        }
+        .header .name{
+            width: 100%;
+            font-size: 40px;
+            display: inline-block;
+            margin: auto;
+            padding: 6px 0;
+            position:absolute;
+        }
+        nav{
+        position: relative;
+        left: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        top:0;
+        background-color: rgb(206, 101, 101);
+        border-color: transparent;
+        }
+        nav a{
+        border-bottom: none;
+        }
+
+        
+        .header nav a:hover{
+            background-color: #fff;
+            
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+        /* .header nav{
+            text-align: right;
+            width: 100%;
+            font-size: 0;
+        }
+        .header nav a{
+            font-size: 16px;
+            color:rgb(39, 37, 37);
+            text-decoration: none;
+            display: inline-block;
+            line-height: 52px;
+            padding: 0 10px;
+        } */
+        /* .header nav a:hover{
+            background-color: #fff;
+        } */
+        
+        .banner img{
+            width: 100%;
+        }
+        .path{
+            display: flex;
+        }
+        .path li{
+            position: relative;
+            padding: 6px 8px;
+        }
+        .path li a{
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .path li+li::before{
+            content: '/';
+            color:#aaa;
+            position: absolute;
+            left:0;
+        }
+        .item h3{
+            font-size: 36px;
+            padding: 0 0 30px;
+        }
+        .wrap{
+            width: 960px;
+            margin: auto;
+        }
+        .about{
+            padding: 40px 0 60px;
+        }
+        .about .wrap{
+            display: flex;
+        }
+        .about .wrap .item{
+            width: 300px;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .about .item img{
+            border-radius: 50%;
+        }
+        .about h2{
+            width: 100%;
+            font-size: 42px;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .about>h2{
+            width: 100%;
+            font-size: 42px;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .about>p{
+            width: 660px;
+            margin: auto;
+            padding: 0 0 40px;
+            text-align: center;
+        }
+        
+        
+        .service{
+            padding: 40px 0;
+            background-color: rgb(253, 194, 184);
+        }
+        .service>h2{
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            font-size: 42px;
+            padding: 20px 0;
+            background-color: rgb(206, 101, 101);
+        }
+        .service>p{
+            width: 660px;
+            margin: auto;
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        .service .wrap{
+            display: flex;
+        }
+        .service .item{
+            margin: 0 10px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .service img{
+            width: 300px;
+            display: flex;
+        }
+
+        .footer{
+            text-align: center;
+            background-color: #888;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="" id="menu_control">
+
+    <div class="header">
+        <h1 class="logo">
+            <a href=""><img src="logo.PNG" ali="網站名稱"></a>
+        </h1>
+        <h1 class="name">芯苓占卜算命工作坊</h1>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+        <nav>
+            <a href="" #="">服務項目</a>
+            <a href="" #="">免費抽牌</a>
+            <a href="" #="">塔羅教學</a>
+            <a href="" #="">老師介紹</a>
+            <a href="" #="">付費方式</a>
+            <a href="" #="">Instagram</a>
+        </nav>
+    </div>
+
+
+
+
+
+    <div class="banner">
+        <img src="tarot.jpg" alt="">
+    </div>
+
+    <ul class="path">
+        <li><a href="#">首頁</a></li>
+        <li><a href="#">服務項目</a></li>
+        <li><a href="#">Instagram</a></li>
+    </ul>
+    
+
+    <div class="about">
+        <h2>關於芯苓</h2>
+        <p></p>
+    </div>
+
+    <div class="service">
+        <h2>服務項目</h2>
+        <!-- <img src="price list.PNG" alt="price list"> -->
+    </div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    
+    
+
+
+
+<div class="footer">
+    &copy; copyright 2021 by fortune_xingling
+</div>
+
+</body>
+</html>
